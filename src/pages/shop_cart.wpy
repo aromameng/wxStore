@@ -1,0 +1,24 @@
+<style lang="less">
+  .container{
+    color: #333;
+  }
+</style>
+<template>
+  <view class="container">
+    <text>购物车</text>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  // import { connect } from 'wepy-redux'
+  // import Toast from 'wepy-com-toast'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '购物车'
+    }
+    components = {}
+    data = {}
+  }
+</script>

@@ -1,0 +1,109 @@
+<style lang="less">
+  .view_home{
+    color: #333;
+  }
+  .swiper{
+    width: 100%;
+  }
+  .nav_icon {
+    height: 80rpx;
+    margin: 0 auto;
+    width: 80rpx;
+    margin-bottom: 14rpx;
+  }
+  .nav_list{
+    display: flex;
+    text-align: center;
+    padding: 20rpx 30rpx;
+    navigator{
+      flex: 1;
+      .nav_text{
+        display: block;
+        font-size: 26rpx;
+      }
+    }
+  }
+</style>
+<template>
+  <view class="view_home">
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="key">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="355" height="150"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="nav_list">
+      <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+        <image src="../lib/images/icon_nav_01_new.png" class="nav_icon"></image>
+        <text class="nav_text">签到有礼</text>
+      </navigator>
+      <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+        <image src="../lib/images/icon_nav_02_new.png" class="nav_icon"></image>
+        <text class="nav_text">换货专区</text>
+      </navigator>
+      <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+        <image src="../lib/images/icon_nav_03_new.png" class="nav_icon"></image>
+        <text class="nav_text">特价专区</text>
+      </navigator>
+      <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+        <image src="../lib/images/icon_nav_04_new.png" class="nav_icon"></image>
+        <text class="nav_text">我要补货</text>
+      </navigator>
+    </view>
+    <recommend :lists.sync="recommendList"></recommend>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  // import { connect } from 'wepy-redux'
+  // import Toast from 'wepy-com-toast'
+  import recommend from '@/components/recommend'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '首页'
+    }
+    components = {
+      recommend
+    }
+    data = {
+      imgUrls: [
+        'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+        'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+      ],
+      indicatorDots: true,
+      autoplay: false,
+      interval: 5000,
+      duration: 1000,
+      recommendList: [{
+        id: 1,
+        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        title: '商品1',
+        price: 24,
+        num: 23
+      }, {
+        id: 2,
+        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        title: '商品1',
+        price: 24,
+        num: 23
+      }, {
+        id: 3,
+        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        title: '商品1',
+        price: 24,
+        num: 23
+      }, {
+        id: 4,
+        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        title: '商品1',
+        price: 24,
+        num: 23
+      }]
+    }
+  }
+</script>

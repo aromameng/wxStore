@@ -1,0 +1,24 @@
+<style lang="less">
+  .view_my{
+    color: #333;
+  }
+</style>
+<template>
+  <view class="view_my">
+    <text>我的页面</text>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  // import { connect } from 'wepy-redux'
+  // import Toast from 'wepy-com-toast'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的'
+    }
+    components = {}
+    data = {}
+  }
+</script>
