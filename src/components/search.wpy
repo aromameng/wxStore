@@ -1,0 +1,36 @@
+<!--积分规则-->
+<template>
+  <view class="cp_search">
+    <input type="text" class="input_search" confirm-type="search" placeholder="搜索商品" />
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+
+export default class PointsRule extends wepy.component {
+  data = {
+
+  }
+
+  methods = {
+
+  }
+
+  onLoad() {}
+}
+
+</script>
+<style lang="less">
+.cp_search {
+  padding: 10rpx 20rpx;
+  .input_search{
+    border: 2rpx solid #ddd;
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 10rpx;
+    padding-left: 30rpx;
+  }
+}
+
+</style>

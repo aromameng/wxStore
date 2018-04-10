@@ -6,6 +6,7 @@
 <template>
   <view class="container">
     <text>分类</text>
+    <Search></Search>
   </view>
 </template>
 
@@ -13,12 +14,15 @@
   import wepy from 'wepy'
   // import { connect } from 'wepy-redux'
   // import Toast from 'wepy-com-toast'
+  import Search from '@/components/search'
 
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '分类'
     }
-    components = {}
+    components = {
+      Search
+    }
     data = {}
   }
 </script>

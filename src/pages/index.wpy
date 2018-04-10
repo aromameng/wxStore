@@ -1,25 +1,39 @@
 <style lang="less">
   .view_home{
     color: #333;
-  }
-  .swiper{
-    width: 100%;
-  }
-  .nav_icon {
-    height: 80rpx;
-    margin: 0 auto;
-    width: 80rpx;
-    margin-bottom: 14rpx;
-  }
-  .nav_list{
-    display: flex;
-    text-align: center;
-    padding: 20rpx 30rpx;
-    navigator{
-      flex: 1;
-      .nav_text{
-        display: block;
-        font-size: 26rpx;
+    .app_down{
+      width: 100%;
+      height: 94rpx;
+      line-height: 94rpx;
+      color: #6c6c6c;
+      background-color: #f3f3f3;
+      text-align: center;
+      font-size: 26rpx;
+    }
+    .nav_list{
+      display: flex;
+      text-align: center;
+      padding: 20rpx 30rpx;
+      .nav_icon {
+        height: 80rpx;
+        margin: 0 auto;
+        width: 80rpx;
+        margin-bottom: 14rpx;
+      }
+      navigator{
+        flex: 1;
+        .nav_text{
+          display: block;
+          font-size: 26rpx;
+        }
+      }
+    }
+    .swiper{
+      width: 100%;
+      height: 348rpx;
+      .slide-image{
+        width: 100%;
+        height: 100%;
       }
     }
   }
@@ -35,7 +49,7 @@
       </block>
     </swiper>
     <view class="nav_list">
-      <navigator url="/page/navigate/navigate?title=navigate" hover-class="navigator-hover">
+      <navigator url="/pages/sign" hover-class="navigator-hover">
         <image src="../lib/images/icon_nav_01_new.png" class="nav_icon"></image>
         <text class="nav_text">签到有礼</text>
       </navigator>
@@ -53,6 +67,7 @@
       </navigator>
     </view>
     <recommend :lists.sync="recommendList"></recommend>
+    <view class="app_down">查看更多优惠 请下载拼多多App</view>
   </view>
 </template>
 
@@ -71,7 +86,7 @@
     }
     data = {
       imgUrls: [
-        'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2767576689,3738410940&fm=200&gp=0.jpg',
         'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
         'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
       ],
@@ -81,28 +96,28 @@
       duration: 1000,
       recommendList: [{
         id: 1,
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        title: '商品1',
-        price: 24,
-        num: 23
+        url: 'https://mcdn.pinduoduo.com/assets/img/cat_boyshirt.jpg',
+        title: '【买一送三】【4件装】2018新款男士短袖T恤 韩版加大码装夏季半袖潮流宽松夏装打底衫圆领印花上衣35%棉  65%涤纶',
+        price: 28,
+        num: 152
       }, {
         id: 2,
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        title: '商品1',
-        price: 24,
-        num: 23
+        url: 'https://mcdn.pinduoduo.com/assets/img/cat_home.jpg',
+        title: ' 特价限量5000件，抢完涨价【27包18包8包】初采原生竹浆抽纸300张/包 3层100抽本色餐巾纸面纸妇婴适用',
+        price: 9.9,
+        num: 1520
       }, {
         id: 3,
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        title: '商品1',
-        price: 24,
-        num: 23
+        url: 'https://mcdn.pinduoduo.com/assets/img/cat_girlshoes.jpg',
+        title: '【限量500，抢完恢复15.9】2018夏季新款镂空女鞋透气网鞋运动鞋板鞋',
+        price: 68,
+        num: 145
       }, {
         id: 4,
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        title: '商品1',
-        price: 24,
-        num: 23
+        url: 'https://mcdn.pinduoduo.com/assets/img/cat_food.jpg',
+        title: '买2送1 阿胶红枣蛋白质粉女性营养奶粉气血美容养颜紧致皮肤1kg',
+        price: 36,
+        num: 265
       }]
     }
   }

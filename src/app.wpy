@@ -1,12 +1,5 @@
 <style lang="less">
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
+@import "./lib/styles/base";
 </style>
 
 <script>
@@ -15,6 +8,10 @@ import 'wepy-async-function'
 
 import { setStore } from 'wepy-redux'
 import configStore from './store'
+import {
+  USER_INFO,
+  SYSTEM_INFO
+} from "./utils/constant"
 
 const store = configStore()
 setStore(store)
@@ -23,6 +20,7 @@ export default class extends wepy.app {
   config = {
     pages: [
       'pages/index',
+      'pages/sign',
       'pages/my',
       'pages/classify',
       'pages/shop_cart',
@@ -67,10 +65,22 @@ export default class extends wepy.app {
   constructor () {
     super()
     this.use('requestfix')
+    this.use('promisify')
   }
 
-  onLaunch() {
-    this.testAsync()
+  async onLaunch() {
+    // this.testAsync()
+    let userInfo = wepy.getStorageSync(USER_INFO) || {}
+    if (!userInfo.nickName) {
+      // 存储userInfo
+      let info = await wepy.getUserInfo()
+      wepy.setStorageSync(USER_INFO, info.userInfo)
+
+      // 存储系统信息
+      let systemInfo = await wepy.getSystemInfoSync()
+      console.log('22222', systemInfo)
+      wepy.setStorageSync(SYSTEM_INFO, systemInfo)
+    }
   }
 
   sleep (s) {

@@ -1,0 +1,157 @@
+<style lang="less">
+  .view_sign{
+    .main{
+      width: 100%;
+      height: 460rpx;
+      position: relative;   
+      color: #fff;
+      .bg_img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .score{
+      position: relative;
+      font-size: 30rpx;
+      top: 40rpx;
+      left: 20rpx;
+    }
+    .out_cir{
+      position: absolute;
+      width: 240rpx;
+      height: 240rpx;
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      background: rgba(255, 255, 255, .5);
+      padding: 14rpx;
+    }
+    .in_cir{
+      position: relative;
+      background: #fff;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;  
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40rpx;
+      box-sizing: border-box;
+      text-align: center;
+      color: #007aff;
+      &:before{
+        content: "";
+        position: absolute;
+        width: 86%;
+        height: 86%;
+        border: 2rpx solid #7fbcff;     
+        top: 7%;
+        left: 7%;
+        border-radius: 50%;  
+      }
+      .sign_status{
+        font-size: 40rpx;
+        flex: 6;
+        line-height: 80rpx;
+        border-bottom: 1px solid #7fbcff;
+        width:100%;
+      }    
+      .sign_times{
+        font-size: 32rpx;
+        flex: 4;        
+        line-height: 80rpx;
+      }
+    }
+    .sign_doc{
+      position: absolute;
+      bottom: 20rpx;
+      left: 0;
+      text-align: center;
+      width: 100%;
+      color: #fff;
+      font-size: 32rpx;
+    }
+  }
+</style>
+<template>
+  <view class="view_sign">
+    <view class="main">
+      <image class="bg_img" src='../lib/images/bg_sign.png'></image>
+      <text class="score">积分</text>
+      <view class="out_cir" @tap="sign">
+        <view class="in_cir">
+            <text class="sign_status">
+              <text wx:if="{{signed}}">已签到</text>
+              <text wx:if="{{!signed}}">签到</text>
+            </text>
+            <text class="sign_times">连续{{day}}天</text>
+        </view>
+      </view>
+      <view class="sign_doc" wx:if="{{signed}}">今日已签到，获得10积分</view>
+      <view class="sign_doc" wx:if="{{!signed}}">今日还未签到</view>
+    </view>
+    <!--tab模块-->
+    <view class="tab_box">
+      <Tab @currentTab.user="getCurrentTab" :currentTab.sync="currentTab" :tabList.sync="tabList"></Tab>
+    </view>
+    <scroll-view scroll-y="true" class="swiper-item-box" style="height:{{winHeight - 275}}px">
+      <!-- 积分规则 -->
+      <PointsRule wx:if="{{currentTab==0}}"></PointsRule>
+      <!-- 积分记录 -->
+      <PointsDetail :is_empty.sync="isEmpty" :list.sync="signList" wx:if="{{currentTab==1}}"></PointsDetail>
+    </scroll-view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import {
+    USER_INFO,
+    SYSTEM_INFO
+  } from "../utils/constant"
+  // import { connect } from 'wepy-redux'
+  // import Toast from 'wepy-com-toast'
+  import PointsDetail from '../components/points_detail'
+  import PointsRule from '../components/points_rule'
+  import Tab from '../components/tab'
+  // import Placeholder from "./common/placeholder"
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '签到有礼'
+    }
+    components = {
+      PointsRule,
+      PointsDetail,
+      Tab
+    }
+    data = {
+      signed: false,
+      day: 0,
+      currentTab: 0,
+      tabList: ["积分规则", "获得记录"],
+      winHeight: 0,
+      isEmpty: false,
+      signList: []
+    }
+    methods = {
+      sign () {
+        this.signed = true
+        this.day++
+      },
+      getCurrentTab (cur, evt) {
+        let that = this
+        that.currentTab = cur
+        that.$apply()
+      }
+    }
+
+    async onLoad() {
+      let systemInfo = await wepy.getStorageSync(SYSTEM_INFO)
+      this.winHeight = systemInfo.windowHeight
+    }
+  }
+</script>
