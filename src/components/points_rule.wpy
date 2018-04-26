@@ -32,7 +32,7 @@ export default class PointsRule extends wepy.component {
 .jf_rule {
   border-top: 1px solid #efefef;
   background: #fff;
-  padding: 33px 20rpx;
+  padding: 33px 20rpx 0;
   margin-top: 10rpx;
   .title {
     font-size: 36rpx;
