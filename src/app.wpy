@@ -1,5 +1,6 @@
 <style lang="less">
 @import "./lib/styles/base";
+@import "./lib/styles/icon";
 </style>
 
 <script>
@@ -19,10 +20,10 @@ setStore(store)
 export default class extends wepy.app {
   config = {
     pages: [
+      'pages/classify',
       'pages/index',
       'pages/sign',
       'pages/my',
-      'pages/classify',
       'pages/shop_cart',
       'pages/home_detail'
     ],

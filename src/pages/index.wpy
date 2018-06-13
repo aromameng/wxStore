@@ -1,43 +1,3 @@
-<style lang="less">
-  .view_home{
-    color: #333;
-    .app_down{
-      width: 100%;
-      height: 94rpx;
-      line-height: 94rpx;
-      color: #6c6c6c;
-      background-color: #f3f3f3;
-      text-align: center;
-      font-size: 26rpx;
-    }
-    .nav_list{
-      display: flex;
-      text-align: center;
-      padding: 20rpx 30rpx;
-      .nav_icon {
-        height: 80rpx;
-        margin: 0 auto;
-        width: 80rpx;
-        margin-bottom: 14rpx;
-      }
-      navigator{
-        flex: 1;
-        .nav_text{
-          display: block;
-          font-size: 26rpx;
-        }
-      }
-    }
-    .swiper{
-      width: 100%;
-      height: 348rpx;
-      .slide-image{
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-</style>
 <template>
   <view class="view_home">
     <swiper class="swiper" indicator-dots="{{indicatorDots}}"
@@ -122,3 +82,43 @@
     }
   }
 </script>
+<style lang="less">
+  .view_home{
+    color: #333;
+    .app_down{
+      width: 100%;
+      height: 94rpx;
+      line-height: 94rpx;
+      color: #6c6c6c;
+      background-color: #f3f3f3;
+      text-align: center;
+      font-size: 26rpx;
+    }
+    .nav_list{
+      display: flex;
+      text-align: center;
+      padding: 20rpx 30rpx;
+      .nav_icon {
+        height: 80rpx;
+        margin: 0 auto;
+        width: 80rpx;
+        margin-bottom: 14rpx;
+      }
+      navigator{
+        flex: 1;
+        .nav_text{
+          display: block;
+          font-size: 26rpx;
+        }
+      }
+    }
+    .swiper{
+      width: 100%;
+      height: 348rpx;
+      .slide-image{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+</style>

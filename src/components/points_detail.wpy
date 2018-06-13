@@ -11,12 +11,12 @@
         <span class="detail-money">+{{item.signPoint}}</span>
       </view>
     </view>
-    <placeholder :show.sync="is_empty" message="暂无积分数据"></placeholder>
+    <!-- <placeholder :show.sync="is_empty" message="暂无积分数据"></placeholder> -->
   </view>
 </template>
 <script>
 import wepy from 'wepy'
-import Placeholder from "./common/placeholder"
+// import Placeholder from "./common/placeholder"
 export default class PointsDetail extends wepy.component {
   props = {
     list: [],
@@ -26,7 +26,7 @@ export default class PointsDetail extends wepy.component {
     }
   }
   components = {
-    placeholder: Placeholder
+    
   }
   events = {}
 

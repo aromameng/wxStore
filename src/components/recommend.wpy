@@ -1,3 +1,27 @@
+<template>
+  <view class="recommend_list">
+    <navigator class="list" wx:for="{{lists}}" wx:key="item.id" url="/pages/home_detail?id={{item.id}}">
+      <image class="img" src="{{item.url}}"></image>
+      <view class="detail">
+        <text class="title">{{item.title}}</text>
+        <text class="price">￥{{item.price}}</text>
+        <text class="num">已售：{{item.num}}</text>
+      </view>
+    </navigator>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class List extends wepy.component {
+    props = {
+      lists: {}
+    }
+
+    components = {}
+    methods = {}
+  }
+</script>
 <style type="less">
   .recommend_list {
     color: #344;
@@ -27,27 +51,3 @@
     }
   }
 </style>
-<template>
-  <view class="recommend_list">
-    <navigator class="list" wx:for="{{lists}}" wx:key="item.id" url="/pages/home_detail?id={{item.id}}">
-      <image class="img" src="{{item.url}}"></image>
-      <view class="detail">
-        <text class="title">{{item.title}}</text>
-        <text class="price">￥{{item.price}}</text>
-        <text class="num">已售：{{item.num}}</text>
-      </view>
-    </navigator>
-  </view>
-</template>
-<script>
-  import wepy from 'wepy'
-
-  export default class List extends wepy.component {
-    props = {
-      lists: {}
-    }
-
-    components = {}
-    methods = {}
-  }
-</script>
